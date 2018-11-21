@@ -1,0 +1,65 @@
+Class webED
+
+  /**
+   * @param {string} httpNode - url ноды
+   * @param {string} accessToken - ключ доступа к api ноды
+   * @return {webED}
+   */
+  constructor(httpNode, accessToken)
+  
+  /**
+   * Cоздание нового кошелька
+   * @returns {Object} - {PrivateKey, PublicKey, Address}
+   */
+  createWallet()
+  
+ /**
+   * Создание транакзции для "отправки монет"
+   * @param {string} to - кому (адрес)
+   * @param {string} amount - количество evocoin'ов
+   * @param {string} privateKey - приватный ключ
+   * @return {Status}
+   */
+  async sendCoin(to, amount, privateKey)
+
+ /**
+   * Создание компетенции. 
+   * Отправка комментария к чьей-то компетенции.
+   * Доступно только для прошедших комплаенс.
+   * @param {string} to - кому (адрес)
+   * @param {string} code - код компетенции от 0 до 9999
+   * @param {string} text - текст комментария от 5 до 100 символов
+   * @param {string} mark - оценка, символ "+" или символ "-"
+   * @param {string} privateKey
+   */
+  async sendSkill(to, code, text, mark, privateKey)
+  
+/**
+   * Отправка компланеса. 
+   * Возможна только модератором.
+   * @param {string} address - адрес проходящего комплаенс
+   * @param {string} fullName - ФИО юзера
+   * @param {string} privateKey - приватный ключ
+   */
+  async sendCompliance(address, fullName, privateKey)
+
+/**
+   * Для добавления или удаления модератора админом (add/remove).
+   * Для добавления новго модератора, путем голосования других модераторов.
+   * @param {string} address - адрес получателя
+   * @param {string} action  - 'add','remove','vote'
+   * @param {string} privateKey - приватны ключ
+   */
+  async sendModerator(address, action, privateKey)
+
+ /**
+   * Функция позволяющая осуществлять арбитраж компетенций.
+   * 'create' - доступна для всех у кого есть статус 'compliance'
+   * 'accept' и 'close' - доступна только модераторам
+   * @param {string} ref - ссылка на оспариваемый комментарий в случае 'create',
+   * или ссылка на созданный арбитраж в случае 'accept' или 'close'
+   * @param {string} text - поясняющий комментарий
+   * @param {string} action - 'create', 'accept', 'close'
+   * @param {string} privateKey - приватный ключ
+   */
+  async sendArbitr(ref, text, action, privateKey)
